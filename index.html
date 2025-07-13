@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo 앱 - 할 일 관리</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-primary">
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-overlay">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-4">
+        <div class="row w-100 justify-content-center">
+            <div class="col-12 col-lg-8 col-xl-6">
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                    <!-- Header -->
+                    <div class="card-header bg-gradient-primary text-white text-center py-4 border-0">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <div class="header-icon me-3">
+                                <i class="fas fa-tasks fa-2x"></i>
+                            </div>
+                            <h1 class="mb-0 fw-bold">Todo 앱</h1>
+                        </div>
+                        <p class="mb-0 opacity-75">오늘 할 일을 체계적으로 관리하세요</p>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="card-body p-4">
+                        <!-- Input Section -->
+                        <div class="input-section mb-4">
+                            <div class="input-group input-group-lg shadow-sm">
+                                <input type="text" id="todoInput" class="form-control border-0 py-3" 
+                                       placeholder="새로운 할 일을 입력하세요..." maxlength="100">
+                                <button id="addBtn" class="btn btn-primary px-4">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Filter Buttons -->
+                            <div class="filter-section mt-3 d-flex justify-content-center gap-2">
+                                <button class="btn btn-outline-primary filter-btn active" data-filter="all">
+                                    <i class="fas fa-list me-1"></i>전체
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="active">
+                                    <i class="fas fa-clock me-1"></i>진행중
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="completed">
+                                    <i class="fas fa-check-circle me-1"></i>완료
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Todo List -->
+                        <div class="todo-list mb-4" id="todoList">
+                            <!-- 할 일 항목들이 여기에 동적으로 추가됩니다 -->
+                        </div>
+
+                        <!-- Stats Cards -->
+                        <div class="row mb-4">
+                            <div class="col-4">
+                                <div class="stat-card text-center p-3 rounded-3">
+                                    <div class="stat-icon mb-2">
+                                        <i class="fas fa-list-ul text-primary"></i>
+                                    </div>
+                                    <div class="stat-label small text-muted">전체</div>
+                                    <div class="stat-value fw-bold text-primary" id="totalCount">0</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-card text-center p-3 rounded-3">
+                                    <div class="stat-icon mb-2">
+                                        <i class="fas fa-clock text-warning"></i>
+                                    </div>
+                                    <div class="stat-label small text-muted">진행중</div>
+                                    <div class="stat-value fw-bold text-warning" id="activeCount">0</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-card text-center p-3 rounded-3">
+                                    <div class="stat-icon mb-2">
+                                        <i class="fas fa-check-circle text-success"></i>
+                                    </div>
+                                    <div class="stat-label small text-muted">완료</div>
+                                    <div class="stat-value fw-bold text-success" id="completedCount">0</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="actions d-flex gap-2 justify-content-center">
+                            <button id="clearCompleted" class="btn btn-outline-danger">
+                                <i class="fas fa-trash me-1"></i>완료된 항목 삭제
+                            </button>
+                            <button id="clearAll" class="btn btn-outline-danger">
+                                <i class="fas fa-trash-alt me-1"></i>전체 삭제
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
